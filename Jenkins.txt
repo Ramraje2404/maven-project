@@ -1,0 +1,21 @@
+pipeline
+{
+    agent any
+    stages{
+        stage('scm checkout'){
+            steps{
+                 git 'https://github.com/Ramraje2404/maven-project'   
+            }
+        }
+
+        stage('unit test'){
+            steps{
+                withMaven(maven: 'MVN') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+    }
+
+}
